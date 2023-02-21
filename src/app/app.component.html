@@ -3,8 +3,7 @@
 
 <div id="calculator">
   <div id="input-wrap">
-      <!-- <div id="tmp"></div> -->
-      <div id="input">{{(cal$|async)?.operator}}</div>
+      <div id="tmp">{{(cal$| async)?.prev}} {{(cal$|async)?.operator}}</div>
       <div id="input">{{(cal$|async)?.display}}</div>
 
   </div>
@@ -12,22 +11,22 @@
       <button id="all-clear" (click)="reset()">AC</button>
       <button id="clear" (click)="reset()">C</button>
       <button id="sign">+/-</button>
-      <button class="amt divide"(click)="addOperator('/')">/</button>
+      <button class="amt "(click)="addOperator('/')">/</button>
 
       <button class="number" (click)="getdigit('7')">7</button>
       <button class="number" (click)="getdigit('8')">8</button>
       <button class="number" (click)="getdigit('9')">9</button>
-      <button class="amt times" (click)="addOperator('*')">*</button>
+      <button class="amt " (click)="addOperator('*')">*</button>
 
       <button class="number" (click)="getdigit('4')">4</button>
       <button class="number" (click)="getdigit('5')">5</button>
       <button class="number" (click)="getdigit('6')">6</button>
-      <button class="amt minus" (click)="addOperator('-')">-</button>
+      <button class="amt " (click)="addOperator('-')">-</button>
 
       <button class="number" (click)="getdigit('1')">1</button>
       <button class="number" (click)="getdigit('2')">2</button>
       <button class="number" (click)="getdigit('3')" >3</button>
-      <button class="amt plus" (click)="addOperator('+')">+</button>
+      <button class="amt " (click)="addOperator('+')">+</button>
 
       <button class="number num-0" (click)="getdigit('0')">0</button>
       <button id="dot" (click)="getdigit('.')">.</button>

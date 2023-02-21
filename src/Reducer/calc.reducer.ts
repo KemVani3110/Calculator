@@ -23,14 +23,17 @@ export const calcReducer = createReducer(
     }
     return{...state,current: temp, display:temp}  ;
   } ),
+
   on(CalcAction.addOperator,(state, {operator})=>{
     let temp = calculate(state.prev, state.operator, state.current);
     return{...state, prev:temp,display:temp,operator:operator,current:''}
   } ),
+
   on(CalcAction.calculate,(state)=>{
     let temp = calculate(state.prev, state.operator, state.current);
     return{...state, prev:temp,display:temp,operator:'',current:''}
   } ),
+
   on(CalcAction.reset,(state)=>{
     let temp = calculate(state.prev, state.operator, state.current);
     return{display: '0',
@@ -55,21 +58,28 @@ function calculate(prev: string, operator: string, current: string)
     case '+':
       result = parseFloat(prev) + parseFloat(current);
       break;
-      case '-':
-        result = parseFloat(prev) - parseFloat(current);
-        break;
-        case '*':
+    case '-':
+      result = parseFloat(prev) - parseFloat(current);
+      break;
+    case '*':
       result = parseFloat(prev) * parseFloat(current);
       break;
-      case '/':
+    case '/':
+
       result = parseFloat(prev) / parseFloat(current);
+
       break;
     default:
       break;
   }
+
   let final = result.toString().slice(0,12);
   if(final ==='NaN'){
     return "Syntax Error"
+  }
+  else if(final === "Infinity")
+  {
+    return "Math Error"
   }
   else{
     return final;
